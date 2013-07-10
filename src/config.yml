@@ -1,0 +1,7 @@
+messages:
+  errRequirements: "Requirements not met"
+  errPermissions: "Permission Denied"
+  errLocation: "Location unavailable"
+sectors:
+
+reqs:

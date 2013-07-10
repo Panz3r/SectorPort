@@ -1,0 +1,64 @@
+main: com.gmail.panzeri333.sectorport.SectorPort
+name: SectorPort
+version: 1.0b
+author: iPanz3r
+description: Create a Sign Teleportation System ( Aka STS ) that let players move between location
+permissions:
+    sectorport.sign.use:
+        description: Enable use of SectorPort Sign
+        default: true
+    sectorport.admin.*:
+        description: All permissions to SectorPort Admins
+        children:
+            sectorport.command.use: true
+            sectorreqs.command.use: true
+            sectorport.sector.set: true
+            sectorport.sector.unset: true
+            sectorport.sector.list: true
+            sectorport.requirements.set: true
+            sectorport.requirements.unset: true
+            sectorport.sign.destroy: false
+            sectorport.sign.forfree: true
+    sectorport.sign.forfree:
+        description: Always meets Requirements ;)
+        default: op
+    sectorport.sign.destroy:
+        description: Destroy SectorPort Sign
+        default: op
+    sectorport.command.use:
+        description: Use /sectorport command
+        default: op
+    sectorreqs.command.use:
+        description: Use /sectorreqs command
+        default: op
+    sectorport.sector.set:
+        description: Use /sectorport new <SectorName> to setup a Sector
+        default: op
+    sectorport.sector.unset:
+        description: Use /sectorport del <SectorName> to remove a Sector
+        default: op
+    sectorport.sector.list:
+        description: Use /sectorport list to get a list of the Sector
+        default: op
+    sectorport.requirements.set:
+        description: Use /sectorreqs <SectorName> set <ItemID> to set requirement to the Sector
+        default: op
+    sectorport.requirements.reset:
+        description: Use /sectorreqs <SectorName> reset to remove requirements from the Sector
+        default: op
+    sectorport.requirements.list:
+        description: Use /sectorreqs <SectorName> list to list the requirements for the Sector
+        default: op 
+commands:
+   sectorport:
+      aliases: [sp, sts]
+      description: This is the main SectorPort command
+      usage: /sectorport <list|new|del> [<SectorName>]
+      permission: sectorport.command.use
+      permission-message: You don't have <permission>
+   sectorreqs:
+      aliases: [sr, str]
+      description: This is the SectorPort command to manage Requirements
+      usage: /sectorreqs <SectorName> <set|reset|list> [<ItemID|ItemName>]
+      permission: sectorreqs.command.use
+      permission-message: You don't have <permission>
